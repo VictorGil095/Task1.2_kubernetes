@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: crccheck/hello-world
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 50m
+            memory: 20Mi
+          requests:
+            cpu: 50m
+            memory: 20Mi
